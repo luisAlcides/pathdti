@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path Avanzado: DBA -> Analista -> Científico de Datos</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Gris claro de Bootstrap */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex-grow: 1;
+        }
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #0d6efd; /* Azul de Bootstrap */
+            background-color: #e7f1ff;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(0,0,0,.125);
+        }
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 0.375rem; /* Bordes redondeados de Bootstrap */
+        }
+        .phase-icon {
+            margin-right: 0.75rem;
+            width: 25px; /* Ancho fijo para iconos */
+            text-align: center;
+        }
+        .book-recommendation, .practice-platform, .important-note, .pro-tip {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.375rem;
+        }
+        .book-recommendation {
+            background-color: #e0f2fe; /* Celeste claro */
+            border-left: 5px solid #0ea5e9; /* Azul medio */
+        }
+        .book-recommendation strong {
+            color: #0369a1; /* Azul oscuro */
+        }
+        .practice-platform {
+            background-color: #fffbeb; /* Amarillo muy pálido */
+            border-left: 5px solid #f59e0b; /* Ámbar */
+        }
+        .practice-platform strong {
+            color: #b45309; /* Marrón */
+        }
+         .important-note {
+            background-color: #fefce8; /* Amarillo muy pálido */
+            border-left: 5px solid #eab308; /* Amarillo */
+        }
+         .pro-tip {
+            background-color: #ecfdf5; /* Verde muy pálido */
+            border-left: 5px solid #10b981; /* Verde esmeralda */
+         }
+         .pro-tip strong {
+             color: #047857; /* Verde oscuro */
+         }
+         .timeline {
+            font-style: italic;
+            color: #6c757d; /* Gris secundario de Bootstrap */
+            font-size: 0.9em;
+         }
+         code {
+            background-color: #e9ecef; /* Gris claro */
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 0.875em;
+            border-radius: 0.25rem;
+            color: #d63384; /* Rosa Bootstrap */
+         }
+         footer {
+            background-color: #212529; /* Negro de Bootstrap */
+            color: #f8f9fa; /* Blanco */
+         }
+         /* Asegurar que los iconos en los headers del acordeón estén alineados */
+         .accordion-button {
+             display: flex;
+             align-items: center;
+         }
+         .badge {
+             margin-left: 5px;
+         }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-road me-2"></i>Tu Ruta Profesional de Datos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fase1">Fase 1: DBA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fase2">Fase 2: Analista</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fase3">Fase 3: Data Scientist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#complementarios">Complementarios</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#consejos">Consejos Finales</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="p-5 mb-4 bg-light rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold"><i class="fas fa-user-graduate me-2"></i>Learning Path: De la Base de Datos a la Ciencia de Datos</h1>
+            <p class="col-md-10 fs-5">Un plan de estudio intensivo y avanzado diseñado para ti, enfocado en construir una base sólida y alcanzar la maestría profesional en ~1.5 años. ¡Tu proyecto actual es tu mejor laboratorio!</p>
+            <p>Recuerda: Este es un camino iterativo. Volverás a conceptos anteriores a medida que avances. La <span class="badge bg-primary">constancia</span>, la <span class="badge bg-success">práctica deliberada</span> y la <span class="badge bg-warning text-dark">curiosidad</span> son tus claves.</p>
+          </div>
+        </div>
+
+        <div class="accordion" id="learningPathAccordion">
+
+            <!-- Fase 1: Administrador de Bases de Datos (DBA) -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                       <i class="fas fa-database phase-icon text-primary"></i> <strong class="me-2">Fase 1:</strong> Fundamentos Sólidos y Administración de BD (DBA)
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#learningPathAccordion">
+                    <div class="accordion-body">
+                        <p class="timeline"><strong>Duración Estimada:</strong> 5-6 Meses Intensivos</p>
+                        <p><strong>Objetivo:</strong> Dominio conceptual, SQL avanzado, diseño eficiente y administración competente de PostgreSQL, tu SGBD elegido.</p>
+
+                        <h4 class="mt-4"><i class="fas fa-book-open text-info me-2"></i>Módulo 1.1: Arquitectura y Diseño de BD</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Modelado Relacional Profundo:</strong> Más allá de 3NF/BCNF, entiende las dependencias multivaluadas (4NF) y de Join (5NF) - cuándo son relevantes (y cuándo no complicarse). Comprende bien los pros y contras vs. NoSQL (Documental, Clave-Valor, Columna, Grafo).</li>
+                            <li class="list-group-item"><strong>Diseño Práctico (ERD):</strong> Aprende a usar herramientas de diagramación Entidad-Relación (ERD) como <a href="https://app.diagrams.net/" target="_blank">draw.io</a> (gratuita) o Lucidchart (freemium) para visualizar y documentar tus diseños (¡haz el de tu sistema de maquinaria!).</li>
+                            <li class="list-group-item"><strong>Normalización vs. Desnormalización:</strong> Entiende cuándo la desnormalización controlada puede ser necesaria para optimizar consultas de lectura (típico en Data Warehousing).</li>
+                            <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Libro Clásico (Profundo):</strong> "Fundamentos de Bases de Datos" (Silberschatz, Korth, Sudarshan). Busca la edición más reciente disponible en español. Cubre teoría a fondo.
+                                <br><em>Alternativa Práctica:</em> "Diseño de Bases de Datos: Problemas resueltos y comentados" (Adoración de Miguel et al.) - Enfocado en el 'cómo'.
+                            </li>
+                        </ul>
+
+                        <h4 class="mt-4"><i class="fas fa-laptop-code text-success me-2"></i>Módulo 1.2: SQL Maestro</h4>
+                        <ul class="list-group">
+                             <li class="list-group-item"><strong>Consultas Avanzadas:</strong> DOMINA las Funciones de Ventana (<code>ROW_NUMBER</code>, <code>RANK</code>, <code>DENSE_RANK</code>, <code>LAG</code>, <code>LEAD</code>, funciones agregadas sobre ventanas). CTEs (Common Table Expressions) simples y recursivas. Pivot/Unpivot de datos.</li>
+                             <li class="list-group-item"><strong>Optimización de Consultas:</strong> Aprende a leer y entender los planes de ejecución (<code>EXPLAIN</code> y <code>EXPLAIN ANALYZE</code> en PostgreSQL). Identifica cuellos de botella (escaneos secuenciales costosos, joins ineficientes).</li>
+                             <li class="list-group-item"><strong>Indexación Inteligente:</strong> Tipos de índices en PostgreSQL (B-tree, Hash, GiST, GIN, BRIN) y cuándo usar cada uno. Índices parciales y multicolumna. Mantenimiento de índices.</li>
+                             <li class="list-group-item"><strong>Transacciones y Concurrencia:</strong> Niveles de aislamiento (Isolation Levels) en PostgreSQL. Gestión de bloqueos (deadlocks).</li>
+                             <li class="list-group-item"><strong>Dialectos SQL:</strong> Sé consciente de las pequeñas diferencias entre dialectos (PostgreSQL, MySQL, SQL Server, Oracle). Lo fundamental es común, pero las funciones avanzadas pueden variar.</li>
+                             <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Libro SQL Completo:</strong> "SQL: El Lenguaje de Consulta Estructurado" (Anaya Multimedia, busca última edición). Muy completo en español.
+                                <br><em>Enfoque Rendimiento (Inglés, MUY recomendado):</em> "SQL Performance Explained" por Markus Winand (<a href="https://use-the-index-luke.com/" target="_blank">Web asociada</a>).
+                             </li>
+                             <li class="list-group-item list-group-item-light practice-platform">
+                                <strong><i class="fas fa-keyboard me-1"></i> Plataformas Práctica SQL Avanzado:</strong>
+                                <a href="https://leetcode.com/problemset/database/" target="_blank" class="btn btn-sm btn-outline-primary me-1">LeetCode (Database)</a>
+                                <a href="https://pgexercises.com/" target="_blank" class="btn btn-sm btn-outline-success me-1">PGExercises (PostgreSQL)</a>
+                                <a href="https://www.hackerrank.com/domains/sql" target="_blank" class="btn btn-sm btn-outline-secondary me-1">HackerRank (SQL)</a>
+                                <a href="https://sqlbolt.com/" target="_blank" class="btn btn-sm btn-outline-info">SQLBolt (Interactivo)</a>
+                             </li>
+                        </ul>
+
+                        <h4 class="mt-4"><i class="fas fa-server text-warning me-2"></i>Módulo 1.3: Administración Pro de PostgreSQL</h4>
+                        <ul class="list-group">
+                             <li class="list-group-item"><strong>Configuración Avanzada:</strong> Optimización de memoria (<code>shared_buffers</code>, <code>work_mem</code>), I/O, conexiones (<code>max_connections</code>). Entender los parámetros clave en <code>postgresql.conf</code>.</li>
+                             <li class="list-group-item"><strong>Seguridad Robusta:</strong> Principio de mínimo privilegio. Roles vs Usuarios. Seguridad a nivel de fila (Row Level Security - RLS). Autenticación (<code>pg_hba.conf</code> a fondo). SSL/TLS para conexiones.</li>
+                             <li class="list-group-item"><strong>Backup, Restauración y HA:</strong> Estrategias de backup robustas (full, incremental, diferencial). Point-in-Time Recovery (PITR) con WAL archiving. Introducción a conceptos de Alta Disponibilidad (HA): Replicación (Streaming Replication) y Failover.</li>
+                             <li class="list-group-item"><strong>Monitorización y Mantenimiento Proactivo:</strong> Uso de vistas del sistema (<code>pg_stat_activity</code>, <code>pg_locks</code>, <code>pg_stat_statements</code> - requiere extensión). Herramientas de monitorización externas (pgAdmin, Prometheus+Grafana). Tareas de mantenimiento: <code>VACUUM</code> (manual y autovacuum tuning), <code>REINDEX</code>, <code>ANALYZE</code>. Gestión de logs.</li>
+                             <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Recurso Indispensable:</strong> La <a href="https://www.postgresql.org/docs/current/" target="_blank">Documentación Oficial de PostgreSQL</a> es tu mejor amiga. Es excelente y tiene traducciones parciales.
+                                <br><em>Libro Práctico (Inglés):</em> "PostgreSQL: Up and Running" (O'Reilly, busca 3ra o 4ta edición).
+                                <br><em>Libro (Español, Más General):</em> "Administración de Sistemas Gestores de Bases de Datos" (Ra-Ma, revisa si hay ediciones recientes).
+                             </li>
+                             <li class="list-group-item list-group-item-light pro-tip">
+                                <strong><i class="fas fa-lightbulb me-1"></i> Pro Tip:</strong> ¡Automatiza! Aprende scripting básico (Bash en Linux/macOS, PowerShell en Windows) para tareas repetitivas de administración (backups, chequeos).
+                             </li>
+                        </ul>
+
+                         <div class="alert alert-info mt-3" role="alert">
+                           <h5 class="alert-heading"><i class="fas fa-cogs me-2"></i>¡Aplica YA!</h5>
+                           Usa tu base de datos de maquinaria como conejillo de indias. Diseña el esquema, impleméntalo, cárgalo con datos (reales o simulados), escribe consultas complejas, haz backups, monitorízala. ¡La práctica real es insustituible!
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fase 2: Analista de Datos -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                         <i class="fas fa-chart-line phase-icon text-success"></i> <strong class="me-2">Fase 2:</strong> El Poder del Análisis de Datos
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#learningPathAccordion">
+                    <div class="accordion-body">
+                        <p class="timeline"><strong>Duración Estimada:</strong> 5-6 Meses Intensivos</p>
+                        <p><strong>Objetivo:</strong> Dominar Python para datos, realizar análisis exploratorios profundos, visualizar eficazmente y comunicar insights accionables.</p>
+
+                        <h4 class="mt-4"><i class="fab fa-python text-primary me-2"></i>Módulo 2.1: Python como Navaja Suiza del Analista</h4>
+                         <ul class="list-group">
+                            <li class="list-group-item"><strong>Python Sólido:</strong> No solo sintaxis. Entiende bien estructuras de datos, funciones (lambdas, *args, **kwargs), manejo de errores (try/except), módulos y paquetes. POO básica (clases, objetos). Ambientes virtuales (<code>venv</code> o <code>conda</code>) - ¡ESENCIAL!</li>
+                            <li class="list-group-item"><strong>Pandas Avanzado:</strong> Manipulación eficiente de DataFrames grandes. MultiIndex. Funciones <code>pipe()</code>, <code>apply()</code>, <code>map()</code>, <code>transform()</code>. Trabajo con series temporales. Optimización de memoria (tipos de datos eficientes).</li>
+                            <li class="list-group-item"><strong>NumPy Eficiente:</strong> Computación vectorial, broadcasting. Integración con Pandas. Operaciones matemáticas y estadísticas fundamentales.</li>
+                             <li class="list-group-item"><strong>Interactuando con el Mundo:</strong> Conexión a BBDD (<code>SQLAlchemy</code> como ORM ligero es muy útil además de <code>psycopg2</code>). Leer/escribir diferentes formatos (CSV, Excel, JSON, Parquet - ¡importante para eficiencia!). Scraping web básico (<code>requests</code>, <code>BeautifulSoup</code>). APIs (<code>requests</code>).</li>
+                             <li class="list-group-item"><strong>Entorno de Trabajo:</strong> Domina Jupyter Notebooks/JupyterLab para análisis exploratorio e iterativo. Considera VS Code con extensiones de Python y Jupyter.</li>
+                             <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Libro Clave (Pandas):</strong> "Python for Data Analysis" de Wes McKinney (Anaya Multimedia - "Python para Análisis de Datos"). ¡Busca la 3ª edición! INDISPENSABLE.
+                                <br><em>Libro Python General (Profundo):</em> "Python Fluente" de Luciano Ramalho (si quieres profundizar mucho en el lenguaje, puede estar en inglés). O busca manuales actualizados de Anaya/Ra-Ma.
+                             </li>
+                             <li class="list-group-item list-group-item-light practice-platform">
+                                <strong><i class="fas fa-keyboard me-1"></i> Plataformas Práctica Python/Pandas:</strong>
+                                <a href="https://www.kaggle.com/learn/pandas" target="_blank" class="btn btn-sm btn-outline-info me-1">Kaggle Learn (Pandas)</a>
+                                <a href="https://www.datacamp.com/courses/tech:python" target="_blank" class="btn btn-sm btn-outline-success me-1">DataCamp (Python Track)</a>
+                                <a href="https://exercism.org/tracks/python" target="_blank" class="btn btn-sm btn-outline-secondary me-1">Exercism (Python)</a>
+                             </li>
+                        </ul>
+
+                        <h4 class="mt-4"><i class="fas fa-calculator text-danger me-2"></i>Módulo 2.2: Estadística Aplicada y EDA</h4>
+                         <ul class="list-group">
+                            <li class="list-group-item"><strong>Estadística Descriptiva Robusta:</strong> Más allá de la media/mediana. Entender la forma de la distribución (skewness, kurtosis). Detección de outliers (Boxplots, Z-score, IQR).</li>
+                            <li class="list-group-item"><strong>Probabilidad Fundamental:</strong> Conceptos básicos (eventos, independencia). Distribuciones clave (Normal, Binomial, Poisson, Exponencial). Teorema Central del Límite (intuición).</li>
+                            <li class="list-group-item"><strong>Inferencia Estadística (Introducción):</strong> Intervalos de confianza. Pruebas de hipótesis (conceptos de p-valor, significancia). T-tests, ANOVA (cuándo usarlos). Correlación (Pearson, Spearman) vs. Causalidad - ¡Grábatelo a fuego!</li>
+                            <li class="list-group-item"><strong>Proceso de EDA Sistemático:</strong> Check de calidad de datos, análisis univariante, bivariante y multivariante. Identificación de patrones, relaciones y anomalías. Documentar el proceso.</li>
+                             <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Libro Estadística Accesible:</strong> "Estadística para Dummies" (Planeta). Bueno para empezar sin miedo.
+                                <br><em>Libro Más Formal/Completo:</em> "Probabilidad y Estadística para Ingeniería y Ciencias" (Walpole, Myers et al.). Un clásico universitario denso pero muy bueno. Busca edición en español.
+                                <br><em>Online/Inglés:</em> Think Stats (<a href="https://greenteapress.com/wp/think-stats-2e/" target="_blank">Gratis</a>) usa Python.
+                             </li>
+                        </ul>
+
+                         <h4 class="mt-4"><i class="fas fa-chart-pie text-info me-2"></i>Módulo 2.3: Visualización de Datos e Informes</h4>
+                         <ul class="list-group">
+                            <li class="list-group-item"><strong>Principios de Percepción Visual:</strong> Entender cómo el cerebro procesa la información visual. Evitar gráficos engañosos (ejes truncados, 3D innecesario). Principios Gestalt aplicados a gráficos.</li>
+                            <li class="list-group-item"><strong>Storytelling con Datos:</strong> Estructurar tu análisis como una narrativa. Identificar la audiencia y el mensaje clave. Usar visualizaciones para soportar la historia.</li>
+                            <li class="list-group-item"><strong>Librerías Python para Visualización:</strong> <code>Matplotlib</code> (control total, personalización), <code>Seaborn</code> (gráficos estadísticos atractivos), <code>Plotly</code> (gráficos interactivos - ¡muy útil!).</li>
+                            <li class="list-group-item"><strong>Herramientas de BI (Business Intelligence):</strong> Experimenta con las versiones gratuitas/públicas de <a href="https://powerbi.microsoft.com/es-es/" target="_blank">Power BI</a>, <a href="https://www.tableau.com/public" target="_blank">Tableau Public</a>, o <a href="https://lookerstudio.google.com/" target="_blank">Google Looker Studio</a>. Conecta tu BBDD (o un CSV) y crea un dashboard simple. Entiende su rol en el reporting y self-service analytics.</li>
+                             <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Libro Conceptual (Inglés, Muy Recomendado):</strong> "Storytelling with Data" de Cole Nussbaumer Knaflic. Los principios son universales y transformadores. Existe la versión "Storytelling with Data: Let's Practice!".
+                                <br><em>Libro sobre Visualización (Inglés, Referencia):</em> "The Visual Display of Quantitative Information" de Edward Tufte (Clásico fundamental sobre principios).
+                             </li>
+                              <li class="list-group-item list-group-item-light pro-tip">
+                                <strong><i class="fas fa-lightbulb me-1"></i> Pro Tip:</strong> Para cada análisis, pregúntate: ¿Qué decisión ayuda a tomar esta información? ¿Cómo puedo presentarla de la forma más clara y rápida posible?
+                             </li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Fase 3: Científico de Datos -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                       <i class="fas fa-rocket phase-icon text-danger"></i> <strong class="me-2">Fase 3:</strong> Introducción a la Ciencia de Datos y ML
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#learningPathAccordion">
+                    <div class="accordion-body">
+                        <p class="timeline"><strong>Duración Estimada:</strong> 6-8 Meses Intensivos</p>
+                        <p><strong>Objetivo:</strong> Entender y aplicar algoritmos de Machine Learning, evaluar modelos rigurosamente y comprender el flujo de trabajo de Data Science.</p>
+
+                         <h4 class="mt-4"><i class="fas fa-brain text-primary me-2"></i>Módulo 3.1: Fundamentos Sólidos de Machine Learning</h4>
+                         <ul class="list-group">
+                             <li class="list-group-item"><strong>Paradigmas de ML:</strong> Profundiza en Supervisado (Regresión vs Clasificación), No Supervisado (Clustering, Reducción Dimensión, Detección Anomalías), y entiende los conceptos básicos de Aprendizaje por Refuerzo y Semi-Supervisado.</li>
+                             <li class="list-group-item"><strong>El Ciclo de Vida del Modelo:</strong> Desde la definición del problema y la recolección de datos, hasta el entrenamiento, evaluación, despliegue y monitorización.</li>
+                             <li class="list-group-item"><strong>Evaluación Rigurosa:</strong> Trade-off Sesgo-Varianza (Bias-Variance). Cross-Validation (K-Fold, Stratified K-Fold). Métricas adecuadas para problemas desbalanceados (Precision, Recall, F1, AUC-ROC, Precision-Recall Curve). Métricas de regresión (RMSE, MAE, R²).</li>
+                             <li class="list-group-item"><strong>Ingeniería de Características (Feature Engineering):</strong> Es un arte y ciencia. Imputación de missing values (simple y avanzada), codificación de categóricas (One-Hot, Target Encoding, etc.), escalado (StandardScaler, MinMaxScaler, RobustScaler), transformaciones (log, Box-Cox), creación de características polinómicas o de interacción. Selección de características (filtros, wrappers, métodos embebidos). Feature Importance.</li>
+                             <li class="list-group-item list-group-item-light book-recommendation">
+                                <strong><i class="fas fa-book me-1"></i> Libro Práctico Esencial:</strong> "Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow" (Aurélien Géron). Busca la última edición en español ("Aprendizaje Automático Práctico...", Anaya). ¡Prioridad #1 para ML práctico!
+                                <br><em>Libro Teórico (Inglés, Gratis Online):</em> "An Introduction to Statistical Learning" (ISLR). Fundamentos teóricos claros con ejemplos en R (pero los conceptos son clave). La 2da Edición incluye Python.
+                             </li>
+                         </ul>
+
+                        <h4 class="mt-4"><i class="fas fa-cogs text-success me-2"></i>Módulo 3.2: Algoritmos Clave y Scikit-learn</h4>
+                         <ul class="list-group">
+                            <li class="list-group-item"><strong>Modelos Lineales:</strong> Regresión Lineal (supuestos), Ridge, Lasso (regularización). Regresión Logística para clasificación.</li>
+                            <li class="list-group-item"><strong>Modelos Basados en Distancia/Semejanza:</strong> K-Nearest Neighbors (KNN), Support Vector Machines (SVM) (kernel trick).</li>
+                            <li class="list-group-item"><strong>Modelos Basados en Árboles:</strong> Árboles de Decisión (CART), Random Forests, Gradient Boosting Machines (GBM), XGBoost, LightGBM, CatBoost (comprender las diferencias y ventajas).</li>
+                            <li class="list-group-item"><strong>Clustering:</strong> K-Means, DBSCAN, Clustering Jerárquico.</li>
+                            <li class="list-group-item"><strong>Reducción de Dimensionalidad:</strong> Principal Component Analysis (PCA), t-SNE (para visualización).</li>
+                            <li class="list-group-item"><strong>Maestría en Scikit-learn:</strong> Implementar todo lo anterior. Uso avanzado de Pipelines (con preprocesamiento y modelo). Hyperparameter Tuning (GridSearchCV, RandomizedSearchCV, Optuna/Hyperopt).</li>
+                             <li class="list-group-item list-group-item-light practice-platform">
+                                <strong><i class="fas fa-keyboard me-1"></i> Plataformas Práctica ML:</strong>
+                                <a href="https://www.kaggle.com/competitions" target="_blank" class="btn btn-sm btn-outline-danger me-1">Kaggle Competitions</a> (¡Fundamental!)
+                                <a href="https://scikit-learn.org/stable/auto_examples/index.html" target="_blank" class="btn btn-sm btn-outline-primary me-1">Scikit-learn Examples</a>
+                                <a href="https://www.drivendata.org/competitions/" target="_blank" class="btn btn-sm btn-outline-secondary me-1">DrivenData (Competitions Sociales)</a>
+                             </li>
+                         </ul>
+
+                        <h4 class="mt-4"><i class="fas fa-lightbulb text-warning me-2"></i>Módulo 3.3: Mirando al Horizonte</h4>
+                         <ul class="list-group">
+                             <li class="list-group-item"><strong>Introducción al Deep Learning (DL):</strong> Conceptos de redes neuronales (perceptrón, capas, activación). Casos de uso (visión por computador, procesamiento de lenguaje natural). Frameworks: TensorFlow/Keras (cubierto en libro de Géron) y PyTorch (alternativa popular).</li>
+                             <li class="list-group-item"><strong>Conceptos de MLOps:</strong> ¿Cómo llevar un modelo a producción? Versionado de modelos (MLflow), contenerización (Docker básico), despliegue (APIs con Flask/FastAPI), monitorización de modelos. Solo necesitas la visión general por ahora.</li>
+                             <li class="list-group-item"><strong>Big Data (Contexto):</strong> Entender las 3 Vs (o más). Ecosistema Hadoop (HDFS, MapReduce - histórico), Spark (procesamiento distribuido en memoria - más relevante hoy). Bases de datos NoSQL a escala. No necesitas ser experto, pero sí saber cuándo estas herramientas son necesarias.</li>
+                             <li class="list-group-item"><strong>Ética y Responsabilidad en IA:</strong> Sesgos en datos y modelos, explicabilidad (SHAP, LIME), privacidad (Federated Learning, Differential Privacy - conceptos), fairness. ¡Cada vez más importante!</li>
+                             <li class="list-group-item list-group-item-light pro-tip">
+                                <strong><i class="fas fa-lightbulb me-1"></i> Pro Tip (Proyecto Final):</strong> Intenta aplicar ML a tu problema de maquinaria. ¿Puedes predecir fallos? ¿Estimar tiempos de mantenimiento? ¿Clasificar tipos de averías según sensores? Documenta todo el proceso en un repositorio de GitHub.
+                             </li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Habilidades Complementarias -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                         <i class="fas fa-puzzle-piece phase-icon text-secondary"></i> <strong class="me-2">Habilidades Complementarias Esenciales</strong>
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#learningPathAccordion">
+                    <div class="accordion-body">
+                         <p>Estas habilidades te diferenciarán y potenciarán tu carrera en TODAS las etapas.</p>
+                         <ul class="list-group">
+                             <li class="list-group-item">
+                                 <strong><i class="fab fa-git-alt me-2 text-danger"></i>Control de Versiones (Git/GitHub):</strong> ¡No negociable! Aprende branching (Gitflow simplificado), merging, resolving conflicts, pull requests. Tu GitHub es tu portafolio técnico. Documenta tus proyectos con READMEs claros.
+                                 <div class="book-recommendation"><strong>Recurso:</strong> "Pro Git" (<a href="https://git-scm.com/book/es/v2" target="_blank">Gratis, en Español</a>). Tutoriales interactivos online.</div>
+                             </li>
+                             <li class="list-group-item">
+                                 <strong><i class="fas fa-terminal me-2 text-dark"></i>Línea de Comandos (Bash/Shell):</strong> Navegación, manipulación de archivos, permisos. Uso de <code>grep</code>, <code>awk</code>, <code>sed</code> para procesamiento básico de texto. Tuberías (pipes) y redirección. Conexión remota (SSH).
+                                 <div class="practice-platform"><strong>Práctica:</strong> <a href="https://cmdchallenge.com/" target="_blank">cmdchallenge</a>, <a href="https://linuxjourney.com/" target="_blank">Linux Journey</a>, <a href="https://overthewire.org/wargames/bandit/" target="_blank">OverTheWire Bandit</a> (aprende jugando).</div>
+                             </li>
+                              <li class="list-group-item">
+                                 <strong><i class="fas fa-cloud me-2 text-info"></i>Fundamentos Cloud:</strong> Entender los conceptos básicos de IaaS, PaaS, SaaS. Conocer los principales proveedores (AWS, Azure, GCP) y sus servicios clave para datos (almacenamiento - S3/Blob/GCS, bases de datos gestionadas - RDS/SQL Database/Cloud SQL, cómputo - EC2/VMs/Compute Engine). No necesitas certificación aún, pero sí familiaridad.
+                             </li>
+                             <li class="list-group-item">
+                                 <strong><i class="fas fa-comments me-2 text-success"></i>Comunicación Efectiva:</strong> Explicar conceptos técnicos complejos a audiencias diversas (técnicas y no técnicas). Escucha activa para entender los requerimientos del negocio. Presentaciones claras y concisas. Visualización como herramienta de comunicación.
+                             </li>
+                             <li class="list-group-item">
+                                 <strong><i class="fas fa-users me-2 text-primary"></i>Colaboración y Trabajo en Equipo:</strong> Usar herramientas colaborativas (Git/GitHub, Trello/Jira). Participar en revisiones de código (code reviews). Compartir conocimiento.
+                             </li>
+                             <li class="list-group-item">
+                                 <strong><i class="fas fa-search me-2 text-warning"></i>Resolución de Problemas y Pensamiento Crítico:</strong> Descomponer problemas grandes. Buscar información eficientemente (Stack Overflow, documentación). Experimentar y no tener miedo a equivocarse.
+                             </li>
+                             <li class="list-group-item">
+                                 <strong><i class="fas fa-sync-alt me-2 text-secondary"></i>Aprendizaje Continuo (Lifelong Learning):</strong> ¡El campo evoluciona rapidísimo! Sigue blogs (Towards Data Science, Kaggle Blog), newsletters, podcasts, perfiles relevantes en Twitter/LinkedIn. Asiste a meetups o conferencias (online/presencial). ¡Sé curioso!
+                             </li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consejos Finales -->
+            <div class="accordion-item" id="consejos">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                         <i class="fas fa-bullseye phase-icon text-warning"></i> <strong class="me-2">Consejos Clave para el Éxito</strong>
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#learningPathAccordion">
+                    <div class="accordion-body">
+                        <div class="alert alert-primary" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-briefcase me-2"></i>¡Construye tu Portafolio!</h4>
+                            Desde el día 1. Cada script SQL útil, cada análisis en Jupyter Notebook, cada modelo entrenado, cada visualización interesante... ¡puede ir a tu GitHub! Documenta bien cada proyecto: el problema, los datos, el proceso, los resultados y qué aprendiste. Tu proyecto de maquinaria es tu primera pieza estrella.
+                        </div>
+                         <div class="alert alert-success mt-3" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-users-cog me-2"></i>Únete a la Comunidad</h4>
+                            Participa en foros (Stack Overflow, Reddit - r/datascience, r/learnpython, r/SQL), asiste a meetups (busca grupos locales de Python, Data Science, SQL), contribuye a proyectos open source si puedes. Aprenderás mucho y harás contactos.
+                        </div>
+                        <div class="alert alert-warning mt-3" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-clock me-2"></i>Gestión del Tiempo y Realismo</h4>
+                            1.5 años es MUY ambicioso para este nivel de profundidad. Requiere disciplina férrea y muchas horas semanales (~15-20+). Sé consistente, pero también flexible. Más vale avanzar a paso firme que quemarte. Divide las metas grandes en tareas pequeñas y celebra cada logro. No te compares obsesivamente con otros.
+                        </div>
+                         <div class="alert alert-danger mt-3" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-language me-2"></i>El Inglés es tu Aliado</h4>
+                            Aunque buscamos recursos en español, gran parte de la documentación más reciente, blogs técnicos, cursos avanzados y libros de vanguardia estarán en inglés. Considéralo una herramienta más a desarrollar. No te limites por el idioma.
+                        </div>
+                         <div class="alert alert-info mt-3" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-dumbbell me-2"></i>La Práctica Hace al Maestro</h4>
+                            No te quedes solo en la teoría de los libros. Descarga datasets de Kaggle, participa en desafíos, replica análisis que veas online, intenta resolver problemas de tu trabajo (o simulados) con las técnicas que aprendes. ¡Programa, consulta, analiza, visualiza, modela... TODOS LOS DÍAS si es posible!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Fin Accordion -->
+
+    </div> <!-- Fin Container -->
+
+    <footer class="text-center p-4 mt-5 bg-dark text-light">
+        <div class="container">
+            <p class="mb-0">© 2024 - Tu Learning Path Personalizado y Avanzado.</p>
+            <p class="mb-0 fst-italic">"El éxito es la suma de pequeños esfuerzos repetidos día tras día." - Robert Collier</p>
+             <p class="mt-2"><small>¡Construido con <i class="fab fa-bootstrap text-info"></i> Bootstrap y <i class="fas fa-heart text-danger"></i> para tu éxito profesional!</small></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Optional: Smooth scrolling for navbar links (Bootstrap might handle some of this)
+        document.querySelectorAll('.navbar-nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset based on navbar height (adjust if needed)
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 15; // Extra offset
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Optional: Collapse mobile navbar after click
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarToggler && navbarCollapse.classList.contains('show')) {
+                         bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse); // Get or create Collapse instance
+                         bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                    }
+                }
+            });
+        });
+
+         // Optional: Add 'active' class to nav link when scrolling to section
+         // This is a bit more complex and might require intersection observer
+         // For simplicity, we'll omit this for now, but it's a possible enhancement.
+
+    </script>
+
+</body>
+</html>
